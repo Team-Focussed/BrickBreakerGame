@@ -1,21 +1,21 @@
 const theme = document.getElementById("theme");
-const wallhit = document.getElementById("wallhit");
 
 document.querySelector(".playbtn").addEventListener("click", () => {
   document.querySelector(".homescreen").style.display = "none";
   start();
+  theme.volume = 0.1;
   theme.play();
 });
 
 function ballWallCollision() {
   if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
     ball.dx = -ball.dx;
-    // WALL_HIT.play();
+    playAudio("wallhit");
   }
 
   if (ball.y - ball.radius < 0) {
     ball.dy = -ball.dy;
-    //   WALL_HIT.play();
+    playAudio("wallhit");
   }
 
   if (ball.y + ball.radius > canvas.height) {
@@ -88,7 +88,7 @@ function ballBrickCollision() {
           ball.y + ball.radius > b.y &&
           ball.y - ball.radius < b.y + brick.height
         ) {
-          //   BRICK_HIT.play();
+          playAudio("brickhit");
           wallhit.play();
           ball.dy = -ball.dy;
           b.status = false; // the brick is broken
@@ -108,7 +108,7 @@ function ballPaddleCollision() {
     ball.y > paddle.y
   ) {
     // PLAY SOUND
-    // PADDLE_HIT.play();
+    playAudio("paddlehit");
 
     // CHECK WHERE THE BALL HIT THE PADDLE
     let collidePoint = ball.x - (paddle.x + paddle.width / 2);
