@@ -1,9 +1,9 @@
 // CREATE THE BRICKS
 const brick = {
-  width: canvas.width / 10 - 20,
-  height: 20,
+  width: canvas.width / 15 - 20,
+  height: 35,
   row: 1,
-  column: canvas.width / (canvas.width / 10),
+  column: canvas.width / (canvas.width / 15),
   offSetLeft: 18,
   offSetTop: 40,
   marginTop: 40,
@@ -30,17 +30,27 @@ function createBricks() {
 }
 
 createBricks();
-
+const bricksImages = ["red", "yellow", "blue", "green", "orange", "purple"];
 function drawBricks() {
+  let count = 0;
   for (let r = 0; r < brick.row; r++) {
     for (let c = 0; c < brick.column; c++) {
       let b = bricks[r][c];
       if (b.status) {
         ctx.fillStyle = brick.fillColor;
-        ctx.fillRect(b.x, b.y, brick.width, brick.height);
+        // ctx.fillRect(b.x, b.y, brick.width, brick.height);
+        base_image = new Image();
+        const img = bricksImages[count];
+        base_image.src = `img/brick/${img}.png`;
+
+        ctx.drawImage(base_image, b.x, b.y, brick.width, brick.height);
 
         ctx.strokeStyle = brick.strokeColor;
-        ctx.strokeRect(b.x, b.y, brick.width, brick.height);
+        // ctx.strokeRect(b.x, b.y, brick.width, brick.height);
+      }
+      count += 1;
+      if (count >= bricksImages.length) {
+        count = 0;
       }
     }
   }

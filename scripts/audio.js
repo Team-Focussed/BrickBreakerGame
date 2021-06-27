@@ -3,6 +3,7 @@ const brickhit = document.getElementById("brickhit");
 const paddlehit = document.getElementById("paddlehit");
 const buttonhover = document.getElementById("buttonhover");
 const lifelost = document.getElementById("lifelost");
+const coffindance = document.getElementById("coffindance");
 
 const theme = document.getElementById("theme");
 
@@ -26,6 +27,9 @@ function playAudio(name) {
   } else if (name === "lifelost") {
     lifelost.currentTime = 0;
     lifelost.play();
+  } else if (name === "coffindance") {
+    coffindance.currentTime = 0;
+    coffindance.play();
   }
   console.log(name);
 }

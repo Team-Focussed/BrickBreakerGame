@@ -101,10 +101,12 @@ function update() {
   gameOver();
   levelUp();
 }
+
 function showGameStats(text, textX, textY) {
   // draw text
   ctx.fillStyle = "#000";
-  ctx.font = "25px Germania One";
+  ctx.font = "30px Arial";
+
   ctx.fillText(text, textX, textY);
 
   // draw image
@@ -115,12 +117,20 @@ function draw() {
   drawPaddle();
   drawBall();
   drawBricks();
-  showGameStats(`Score ${SCORE}`, 35, 25);
-  showGameStats(`Lives Left ${LIFE}`, canvas.width - 200, 25);
-  showGameStats(`Level ${LEVEL}`, canvas.width / 2, 25);
+  showGameStats(`Score : ${SCORE}`, 35, 50);
+  showGameStats(`Lives Left : ${LIFE}`, canvas.width - 200, 50);
+  showGameStats(`Level : ${LEVEL}`, canvas.width / 2, 50);
 }
 function gameOver() {
+  const lostScreen = document.querySelector(".lost");
   if (LIFE <= 0) {
+    lostScreen.querySelector(".subtitle").innerHTML = `Score = ${SCORE}`;
+    lostScreen.style.display = "block";
+    lostScreen.querySelector(".playagainbtn").addEventListener("click", () => {
+      lostScreen.style.display = "none";
+      window.location.reload();
+    });
+    playAudio("coffindance");
     console.log("You Loose");
     GAME_OVER = true;
   }
@@ -136,6 +146,9 @@ function start() {
 
   if (!GAME_OVER) {
     requestAnimationFrame(start);
+  } else {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    draw();
   }
 }
 // start();

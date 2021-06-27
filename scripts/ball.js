@@ -24,7 +24,7 @@ function moveBall() {
   ball.x += ball.dx;
   ball.y += ball.dy;
 }
-function resetBall(speed = 3) {
+function resetBall(speed = 10) {
   ball.x = canvas.width / 2;
   ball.y = paddle.y - BALL_RADIUS;
   ball.dx = speed * (Math.random() * 2 - 1);
