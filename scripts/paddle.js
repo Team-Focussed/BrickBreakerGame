@@ -16,10 +16,8 @@ function drawPaddle() {
 function movePaddle() {
   document.addEventListener("mousemove", (e) => {
     paddle.x = e.clientX - PADDLE_WIDTH / 2;
-    // if (paddle.x + paddle.width / 2 > canvas.width) {
-    //   console.log("Right");
-    // } else if (paddle.x < 0) {
-    //   console.log("Left");
+    // if (e.clientX > window.innerWidth - paddle.width) {
+    //   console.log(e.clientX, (window.innerWidth = paddle.width));
     // }
   });
 }
