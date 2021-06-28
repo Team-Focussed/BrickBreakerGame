@@ -8,6 +8,20 @@ document.querySelectorAll(".levelbox").forEach((level) => {
     ball.speed = parseInt(level.dataset.speed);
   });
 });
+const instructionbtn = document.querySelector(".instructionbtn");
+const instruction = document.querySelector(".instruction");
+if (instructionbtn) {
+  instructionbtn.addEventListener("click", () => {
+    instruction.style.display = "block";
+    instruction.querySelector(".close").addEventListener("click", () => {
+      instruction.style.display = "none";
+    });
+    // instruction.querySelector(".playagainbtn").addEventListener("click", () => {
+    //   instruction.style.display = "none";
+    //   window.location.reload();
+    // });
+  });
+}
 
 if (username) {
   username.addEventListener("change", (e) =>
@@ -35,10 +49,13 @@ async function getLeaderBoaard() {
 }
 const video = document.querySelector("video");
 
-// // document.querySelector('.leaderboard').<div class="row">
-// // <div class="name">Gaurav</div>
-// // <div class="point">45</div>
-// // </div>
+async function getUserRank(username) {
+  const res = await fetch(
+    `https://bricksbackend.azurewebsites.net/me?endpoint=B&name=${username}`
+  );
+  const data = await res.json();
+  return data;
+}
 
 window.onload = async () => {
   if (video) {
@@ -46,16 +63,29 @@ window.onload = async () => {
   }
   const card = document.querySelector(".leaderboard .card");
   const datas = await getLeaderBoaard();
+  const userRank = await getUserRank("programmergaurav");
+  console.log(userRank);
   if (card) {
     var row = "";
-    datas.map((data) => {
+    datas.map((data, index) => {
       row += `
     <div class="row">
+      <div class="name">${index + 1}</div>
       <div class="name">${data.name}</div>
       <div class="point">${data.score}</div>
     </div>
   `;
     });
     card.innerHTML += row;
+
+    if (!userRank.error) {
+      card.innerHTML += `
+    <div class="row userrank">
+      <div class="rank">${userRank.position}</div>
+      <div class="name">you</div>
+    <div class="point">${userRank.score}</div>
+  </div>
+    `;
+    }
   }
 };

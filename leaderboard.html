@@ -8,16 +8,35 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav class="navbar" style="color: rgb(24, 24, 24)">
+    <nav class="navbar" style="background-color: #3f493e">
       <a class="navbar-brand" href="/">Atari Breakout</a>
       <div class="navbar-nav">
-        <a class="nav-item" href="./leaderboard.html">Leaderboard</a>
+        <a class="nav-item" href="leaderboard.html">Leaderboard</a>
+        <a class="nav-item instructionbtn" href="#">Instruction</a>
       </div>
     </nav>
+    <div class="instruction">
+      <div class="card">
+        <div class="close">X</div>
+        <div class="title">instruction</div>
+        <div class="subtitle">How TO Play</div>
+        <div class="option">You already know how to</div>
+        <div class="subtitle">Power Ups</div>
+        <div class="option" style="padding-bottom: 20px">
+          <img src="./img//brick/gaintball.png" alt="" />
+          Increases the Size of your balls
+        </div>
+        <div class="option">
+          <img src="./img//brick/gaintpaddle.png" alt="" />
+          Increases the Size of your paddle
+        </div>
+      </div>
+    </div>
     <div class="leaderboard">
       <div class="card">
         <div class="title">LeaderBoard</div>
         <div class="row">
+          <div class="rank">rank</div>
           <div class="name">name</div>
           <div class="point">score</div>
         </div>

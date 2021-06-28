@@ -130,7 +130,7 @@ video {
 
 .navbar {
   color: #fff;
-  padding: 20px;
+  padding: 30px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -141,9 +141,17 @@ video {
 }
 .navbar .navbar-nav {
   float: right;
+  display: flex;
 }
-
-.lost {
+.navbar .navbar-nav {
+  float: right;
+  display: flex;
+}
+.navbar .navbar-nav a {
+  padding: 0px 20px;
+}
+.lost,
+.instruction {
   position: absolute;
   top: 0;
   left: 0;
@@ -152,6 +160,7 @@ video {
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
 }
+.instruction .card,
 .lost .card {
   color: #000;
   position: absolute;
@@ -163,11 +172,20 @@ video {
   padding: 50px;
   text-align: center;
 }
-.lost .card .title {
+.instruction .title,
+.lost .title {
   font-size: 2.5rem;
 }
+.instruction .title,
 .lost .subtitle {
   padding: 30px;
+}
+.instruction .option {
+  padding: 10px 0px 50px 0px;
+  font-size: 0.8rem;
+}
+.instruction .option img {
+  vertical-align: middle;
 }
 .lost .playagainbtn {
   border-radius: 25px;
@@ -190,12 +208,23 @@ video {
   border: 2px solid #485b49;
   color: #485b49;
 }
-
+.instruction {
+}
+.instruction .card {
+  padding-top: 100px;
+  width: 800px;
+}
+.instruction .card .close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+}
 .leaderboard {
   text-transform: uppercase;
   color: #000;
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 20px;
   left: 0;
   background: url("./img/lbbg.png");
   background-size: cover;
@@ -208,7 +237,8 @@ video {
 }
 
 .leaderboard .card {
-  width: 40%;
+  position: relative;
+  width: 50%;
   margin-left: 100px;
   background-color: #fff;
   height: 80vh;
@@ -217,6 +247,8 @@ video {
 .leaderboard .title {
   padding: 20px;
   font-size: 1.5rem;
+  background-color: #485b49;
+  color: #fff;
 }
 .leaderboard .row {
   padding: 20px;
@@ -224,14 +256,21 @@ video {
   justify-content: space-evenly;
 }
 .leaderboard .row .name {
-  width: 50%;
+  width: 40%;
 }
 .leaderboard .row .score {
-  width: 50%;
+  width: 40%;
+}
+.leaderboard .row .score {
+  width: 40%;
 }
 .leaderboard .row div {
-  width: 50%;
+  width: 40%;
 }
 .leaderboard .row:nth-child(2) {
-  font-size: 2rem;
+  font-size: 1.2rem;
+}
+.userrank {
+  background-color: #485b49;
+  color: #fff;
 }
