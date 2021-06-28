@@ -29,7 +29,25 @@ function ballBrickCollision() {
           ball.y + ball.radius > b.y &&
           ball.y - ball.radius < b.y + brick.height
         ) {
-          playAudio("brickhit");
+          if (b.powerUp) {
+            if (b.powerUp === "gaintball") {
+              ball.radius = 25;
+              setTimeout(() => {
+                ball.radius = BALL_RADIUS;
+              }, 5000);
+            } else if (b.powerUp === "gaintpaddle") {
+              paddle.width = 300;
+              paddle.height = 60;
+              setTimeout(() => {
+                paddle.width = PADDLE_WIDTH;
+                paddle.height = PADDLE_HEIGHT;
+              }, 5000);
+            }
+            playAudio("bonus");
+          } else {
+            playAudio("brickhit");
+          }
+
           wallhit.play();
           ball.dy = -ball.dy;
           b.status = false; // the brick is broken
@@ -77,18 +95,12 @@ function levelUp() {
   }
 
   if (isLevelDone) {
-    // WIN.play();
-
-    if (LEVEL >= MAX_LEVEL) {
-      console.log("Win");
-      GAME_OVER = true;
-      return;
-    }
     brick.row++;
     createBricks();
-    ball.speed += 0.5;
+    ball.speed += 4;
     resetBall();
     LEVEL++;
+    playAudio("levelup");
   }
 }
 
@@ -104,7 +116,7 @@ function update() {
 
 function showGameStats(text, textX, textY) {
   // draw text
-  ctx.fillStyle = "#000";
+  ctx.fillStyle = "#FFF";
   ctx.font = "30px Arial";
 
   ctx.fillText(text, textX, textY);
@@ -121,6 +133,20 @@ function draw() {
   showGameStats(`Lives Left : ${LIFE}`, canvas.width - 200, 50);
   showGameStats(`Level : ${LEVEL}`, canvas.width / 2, 50);
 }
+async function updateLeaderboard(name, score) {
+  const response = await fetch("https://bricksbackend.azurewebsites.net/", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: name,
+      endpoint: "B",
+      score: score,
+    }),
+  });
+}
 function gameOver() {
   const lostScreen = document.querySelector(".lost");
   if (LIFE <= 0) {
@@ -130,6 +156,9 @@ function gameOver() {
       lostScreen.style.display = "none";
       window.location.reload();
     });
+    if (localStorage.getItem("username")) {
+      updateLeaderboard(localStorage.getItem("username"), SCORE);
+    }
     playAudio("coffindance");
     console.log("You Loose");
     GAME_OVER = true;

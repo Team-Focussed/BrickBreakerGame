@@ -12,7 +12,31 @@ function drawBall() {
   ctx.beginPath();
 
   ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+  ctx.fillStyle = "#9396A1";
   ctx.fill();
+  // base_image = new Image();
+  // base_image.src = `img/ball.png`;
+  // base_image.style.borderRadius = "100%";
+  // ctx.drawImage(base_image, ball.x, ball.y, ball.radius * 2, ball.radius * 2);
+  // var thumbImg = document.createElement("img");
+
+  // thumbImg.src = "img/ball.png";
+  // thumbImg.onload = function () {
+  //   ctx.save();
+  //   ctx.beginPath();
+  //   ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+  //   ctx.closePath();
+  //   ctx.clip();
+
+  //   ctx.drawImage(thumbImg, ball.x, ball.y, ball.radius * 2, ball.radius * 2);
+
+  //   ctx.beginPath();
+  //   ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+  //   // ctx.fillStyle = "#fff";
+  //   ctx.clip();
+  //   ctx.closePath();
+  //   ctx.restore();
+  // };
 
   ctx.stroke();
 

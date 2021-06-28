@@ -24,13 +24,29 @@ function createBricks() {
           brick.offSetTop +
           brick.marginTop,
         status: true,
+        powerUp: null,
       };
     }
   }
 }
 
 createBricks();
-const bricksImages = ["red", "yellow", "blue", "green", "orange", "purple"];
+const bricksImages = [
+  "gaintball",
+  "red",
+  "yellow",
+  "blue",
+  "green",
+  "orange",
+  "purple",
+  "red",
+  "gaintpaddle",
+  "yellow",
+  "blue",
+  "green",
+  "orange",
+  "purple",
+];
 function drawBricks() {
   let count = 0;
   for (let r = 0; r < brick.row; r++) {
@@ -42,6 +58,12 @@ function drawBricks() {
         base_image = new Image();
         const img = bricksImages[count];
         base_image.src = `img/brick/${img}.png`;
+        if (count === 0) {
+          b.powerUp = "gaintball";
+        }
+        if (count === 8) {
+          b.powerUp = "gaintpaddle";
+        }
 
         ctx.drawImage(base_image, b.x, b.y, brick.width, brick.height);
 
@@ -54,4 +76,8 @@ function drawBricks() {
       }
     }
   }
+}
+
+function addPowerUp(brick) {
+  console.log(brick);
 }

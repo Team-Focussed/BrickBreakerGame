@@ -9,15 +9,17 @@ const paddle = {
 
 // DRAW PADDLE
 function drawPaddle() {
-  ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
-  ctx.strokeRect(paddle.x, paddle.y, paddle.width, paddle.height);
+  ctx.fillStyle = "#fff";
+  // ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+  base_image = new Image();
+  base_image.src = `img/paddle.png`;
+  ctx.drawImage(base_image, paddle.x, paddle.y, paddle.width, paddle.height);
 }
 
 function movePaddle() {
   document.addEventListener("mousemove", (e) => {
-    paddle.x = e.clientX - PADDLE_WIDTH / 2;
-    // if (e.clientX > window.innerWidth - paddle.width) {
-    //   console.log(e.clientX, (window.innerWidth = paddle.width));
-    // }
+    if (100 < e.clientX && e.clientX < window.innerWidth - 100) {
+      paddle.x = e.clientX - PADDLE_WIDTH / 2;
+    }
   });
 }

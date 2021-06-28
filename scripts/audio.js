@@ -4,6 +4,8 @@ const paddlehit = document.getElementById("paddlehit");
 const buttonhover = document.getElementById("buttonhover");
 const lifelost = document.getElementById("lifelost");
 const coffindance = document.getElementById("coffindance");
+const bonus = document.getElementById("bonus");
+const levelup = document.getElementById("levelup");
 
 const theme = document.getElementById("theme");
 
@@ -29,7 +31,14 @@ function playAudio(name) {
     lifelost.play();
   } else if (name === "coffindance") {
     coffindance.currentTime = 0;
+    coffindance.volume = 0.2;
     coffindance.play();
+  } else if (name === "bonus") {
+    bonus.currentTime = 0;
+    bonus.play();
+  } else if (name === "levelup") {
+    levelup.currentTime = 0;
+    levelup.play();
   }
-  console.log(name);
+  // console.log(name);
 }

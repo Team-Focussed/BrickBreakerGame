@@ -19,6 +19,24 @@ a {
   height: 100vh;
   width: 100vw;
   display: block;
+  /* background: url("./img/bg.jpg"); */
+  background: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bgvideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+video {
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: -1;
 }
 .homescreen {
   text-transform: uppercase;
@@ -84,6 +102,17 @@ a {
   border: 3px solid #fff;
   display: inline-block;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+.level .levelbox:hover {
+  transform: scale(1.1);
+  color: #485b49;
+  background-color: #fff;
+}
+.level .speed {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
 }
 .username {
   color: #fff;
@@ -160,4 +189,49 @@ a {
 
   border: 2px solid #485b49;
   color: #485b49;
+}
+
+.leaderboard {
+  text-transform: uppercase;
+  color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("./img/lbbg.png");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.leaderboard .card {
+  width: 40%;
+  margin-left: 100px;
+  background-color: #fff;
+  height: 80vh;
+  overflow-y: scroll;
+}
+.leaderboard .title {
+  padding: 20px;
+  font-size: 1.5rem;
+}
+.leaderboard .row {
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.leaderboard .row .name {
+  width: 50%;
+}
+.leaderboard .row .score {
+  width: 50%;
+}
+.leaderboard .row div {
+  width: 50%;
+}
+.leaderboard .row:nth-child(2) {
+  font-size: 2rem;
 }

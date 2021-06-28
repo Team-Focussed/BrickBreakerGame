@@ -9,23 +9,30 @@
   </head>
   <body>
     <canvas id="canvas"></canvas>
+   <div class="bgvideo">
+    <video controls autoplay loop>
+      <source src="./img/bg.mp4" type="video/mp4">
+    </video>
+   </div>
     <div class="level">
       <nav class="navbar">
         <a class="navbar-brand" href="/">Atari Breakout</a>
         <div class="navbar-nav">
-          <a class="nav-item" href="leaderboards.html">Leaderboards</a>
+          <a class="nav-item" href="leaderboard.html">Leaderboard</a>
         </div>
       </nav>
       <input placeholder="Username" type="text" class="username" />
 
-      <div>
-        <div class="levelbox" data-speed="4">Slow</div>
-      </div>
-      <div>
-        <div class="levelbox" data-speed="8">Medium</div>
-      </div>
-      <div>
-        <div class="levelbox" data-speed="12">Fast</div>
+      <div class="speed"">
+        <div>
+          <div class="levelbox" data-speed="4">Slow</div>
+        </div>
+        <div>
+          <div class="levelbox" data-speed="8">Medium</div>
+        </div>
+        <div>
+          <div class="levelbox" data-speed="12">Fast</div>
+        </div>
       </div>
     </div>
     <div class="lost">
@@ -33,17 +40,19 @@
         <div class="title">Wasted</div>
         <div class="subtitle">Score = 0</div>
         <div class="playagainbtn">Restart</div>
-        <div class="leaderboardbtn">Leaderboards</div>
+        <a class="leaderboardbtn" href="leaderboard.html">Leaderboard</a>
       </div>
     </div>
     <!--  -->
-    <audio src="./sounds/wallhit.mp3" id="wallhit" a></audio>
-    <audio src="./sounds/brick_hit.mp3" id="brickhit" a></audio>
-    <audio src="./sounds/paddlehit.mp3" id="paddlehit" a></audio>
-    <audio src="./sounds/our/GTASanTheme.webm" id="theme"></audio>
+    <audio src="./sounds/wallhit.mp3" id="wallhit" ></audio>
+    <audio src="./sounds/brick_hit.mp3" id="brickhit" ></audio>
+    <audio src="./sounds/bounce.wav" id="paddlehit" ></audio>
+    <audio src="./sounds/SOUND_BONUS_GET.wav" id="bonus" ></audio>
+    <audio src="./sounds/levelup.wav" id="levelup" ></audio>
+    <audio src="./sounds/our/GTASanTheme.webm" id="theme" loop></audio>
     <audio src="./sounds/buttonhover.wav" id="buttonhover"></audio>
     <audio src="./sounds/lifelost.mp3" id="lifelost"></audio>
-    <audio src="./sounds/coffindance.mp3" id="coffindance"></audio>
+    <audio src="./sounds/coffindance.mp3" id="coffindance" loop></audio>
     <!--  -->
     <script src="./scripts/canvas.js"></script>
     <script src="./scripts/audio.js"></script>
