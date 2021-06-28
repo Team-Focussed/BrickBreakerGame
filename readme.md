@@ -2,7 +2,7 @@
 
 This is a Breakout game which we created during a hackakthon in Devsnest.
 <br />
-[Demo Video](https://drive.google.com/file/d/1Uls7LGtsht1D5HLVrpdVTPzXHFtKd5ok/view)
+[Demo Video](https://drive.google.com/drive/folders/1evj3nOqF4V70nmotMqSStUTD6NI16L5N)
 <br />
 [Figma Design](https://www.figma.com/file/SV45jPAdIxwiLKO1sBVsxG/Breakout-Hackathon?node-id=0%3A1)
 <br />
