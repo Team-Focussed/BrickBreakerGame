@@ -54,15 +54,16 @@ function drawBricks() {
       let b = bricks[r][c];
       if (b.status) {
         ctx.fillStyle = brick.fillColor;
-        // ctx.fillRect(b.x, b.y, brick.width, brick.height);
+
         base_image = new Image();
         const img = bricksImages[count];
         base_image.src = `img/brick/${img}.webp`;
         if (count === 0) {
           b.powerUp = "gaintball";
-        }
-        if (count === 8) {
+        } else if (count === 8) {
           b.powerUp = "gaintpaddle";
+        } else {
+          ctx.fillRect(b.x, b.y, brick.width, brick.height);
         }
 
         ctx.drawImage(base_image, b.x, b.y, brick.width, brick.height);
