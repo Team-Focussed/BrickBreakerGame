@@ -10,7 +10,7 @@ const paddle = {
 // DRAW PADDLE
 function drawPaddle() {
   ctx.fillStyle = "#fff";
-  ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+  // ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
   base_image = new Image();
   base_image.src = `img/paddle.webp`;
   ctx.drawImage(base_image, paddle.x, paddle.y, paddle.width, paddle.height);
