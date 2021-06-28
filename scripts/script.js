@@ -36,7 +36,6 @@ document.querySelectorAll(".levelbox").forEach((a) => {
   a.addEventListener("mouseover", () => {
     playAudio("buttonhover");
   });
-  console.log(a);
 });
 
 async function getLeaderBoaard() {
@@ -63,8 +62,9 @@ window.onload = async () => {
   }
   const card = document.querySelector(".leaderboard .card");
   const datas = await getLeaderBoaard();
-  const userRank = await getUserRank("programmergaurav");
-  console.log(userRank);
+  const userRank = await getUserRank(
+    localStorage.getItem("username").toLowerCase()
+  );
   if (card) {
     var row = "";
     datas.map((data, index) => {

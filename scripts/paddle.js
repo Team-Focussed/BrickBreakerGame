@@ -12,14 +12,17 @@ function drawPaddle() {
   ctx.fillStyle = "#fff";
   // ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
   base_image = new Image();
-  base_image.src = `img/paddle.png`;
+  base_image.src = `img/paddle.webp`;
   ctx.drawImage(base_image, paddle.x, paddle.y, paddle.width, paddle.height);
 }
 
 function movePaddle() {
   document.addEventListener("mousemove", (e) => {
-    if (100 < e.clientX && e.clientX < window.innerWidth - 100) {
-      paddle.x = e.clientX - PADDLE_WIDTH / 2;
+    if (
+      paddle.width / 2 < e.clientX &&
+      e.clientX < window.innerWidth - paddle.width / 2
+    ) {
+      paddle.x = e.clientX - paddle.width / 2;
     }
   });
 }

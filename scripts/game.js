@@ -34,14 +34,14 @@ function ballBrickCollision() {
               ball.radius = 25;
               setTimeout(() => {
                 ball.radius = BALL_RADIUS;
-              }, 5000);
+              }, 10000);
             } else if (b.powerUp === "gaintpaddle") {
               paddle.width = 300;
               paddle.height = 60;
               setTimeout(() => {
                 paddle.width = PADDLE_WIDTH;
                 paddle.height = PADDLE_HEIGHT;
-              }, 5000);
+              }, 10000);
             }
             playAudio("bonus");
           } else {
@@ -97,7 +97,7 @@ function levelUp() {
   if (isLevelDone) {
     brick.row++;
     createBricks();
-    ball.speed += 4;
+    ball.speed += 1;
     resetBall();
     LEVEL++;
     playAudio("levelup");
@@ -157,10 +157,9 @@ function gameOver() {
       window.location.reload();
     });
     if (localStorage.getItem("username")) {
-      updateLeaderboard(localStorage.getItem("username"), SCORE);
+      updateLeaderboard(localStorage.getItem("username").toLowerCase(), SCORE);
     }
     playAudio("coffindance");
-    console.log("You Loose");
     GAME_OVER = true;
   }
 }

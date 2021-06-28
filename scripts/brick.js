@@ -57,7 +57,7 @@ function drawBricks() {
         // ctx.fillRect(b.x, b.y, brick.width, brick.height);
         base_image = new Image();
         const img = bricksImages[count];
-        base_image.src = `img/brick/${img}.png`;
+        base_image.src = `img/brick/${img}.webp`;
         if (count === 0) {
           b.powerUp = "gaintball";
         }
@@ -76,8 +76,4 @@ function drawBricks() {
       }
     }
   }
-}
-
-function addPowerUp(brick) {
-  console.log(brick);
 }
